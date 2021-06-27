@@ -1,0 +1,198 @@
+// 1 add variables
+$brand-color: #FF715B;
+$font-color: #2C2C2C;
+$light-color: #A79997;
+$input-shape: #F5EBE9;
+$card-bg: #f8f8f8;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  padding-bottom: 10em;
+}
+a {
+  text-decoration: none;
+  color: $font-color;
+
+  // &:hover {
+  //   border-bottom: 1px solid $font-color;
+  // }
+}
+// 1.1 content
+.content {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0 1em;
+}
+
+// 2 header
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+}
+#logo {
+  img {
+    height: 2em;
+  }
+  a {
+
+  }
+}
+nav ul{
+  display: flex;
+  list-style-type: none;
+
+  li{
+    padding: 0 1.5em;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  .my_account {
+    padding-right: 2em;
+    img {
+      padding-right: 1em;
+    }
+    a {
+      display: flex;
+    }
+  }
+}
+// header
+
+// main 
+.seaside {
+  max-width: 100%;
+}
+.banner {
+  position: relative;
+  &__message {
+    font-size: 2em;
+    position: absolute;
+    top: 160px;
+    left: 70px;
+  }
+  h2 + h2 {
+    margin-bottom: .5em;
+  }
+}
+
+button {
+  background-color: $brand-color;
+  color: white;
+  padding: 1em 2em;
+  border: transparent;
+}
+
+
+.filter {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 10px 30px 5px rgba(219, 200, 197, 0.2);
+  &__item {
+    padding: 1.5em;
+    flex: 1;
+
+    label span {
+      display: block;
+      color: $light-color;
+      font-size: 0.75em;
+      padding-left: .35em;
+    }
+
+    input, select {
+      width: 100%;
+      color: $brand-color;
+      border: 0px;
+      border-bottom: 1px solid $input-shape;
+      padding: .5em 0;
+      margin-top: .5em;
+    }
+    button {
+      width: 100%;
+    }
+  }
+
+  &.discover {
+    width: 85%;
+    position: relative;
+    margin-top: -50px;
+    margin-left: auto;
+    margin-bottom: 3em;
+  }
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .step {
+    text-align: center;
+    background-color: $card-bg;
+    max-width: 200px;
+    margin: .5em;
+    
+    &:hover {
+      background-color: white;
+      box-shadow: 0px 12px 30px rgba(200, 180, 180, 0.2);
+      // transition: all .2s linear;
+    }
+    
+    &__content {
+      padding: 1.3em;
+    }
+
+    &__image {
+      margin-bottom: 1em;
+      img{
+        width: 70px;
+      }
+    }
+
+    &__header {
+      margin-bottom: 1em;
+      font-size: 1em;
+    }
+
+    &__description {
+      color: $light-color;
+      font-size: 0.75em;
+    }
+  }
+}
+
+
+@media (max-width: 680px) {
+  nav {
+    display: none;
+  }
+
+  .banner {
+    margin-bottom: 1em;
+    &__message {
+      font-size: 1em;
+      top: 20px;
+      left: 20px;
+    }
+  }
+
+  .filter {
+    display: block;
+    &.discover {
+      width: 100%;
+      position: relative;
+      margin-top: 0;
+    }
+    &__item {
+      padding: 1em;
+    }
+  }
+}

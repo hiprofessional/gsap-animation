@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="content">
+    <header>
+      <div id="logo">
+        <a href='/'>
+          <img src="images/logo.svg" alt="">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Destination</a></li>
+          <li><a href="#">Offer</a></li>
+          <li><a href="#">Tour</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="account">
+        <div class="my_account">
+          <a href='#'>
+            <img src="images/user.svg" alt="">
+            <span>My Account</span>
+          </a>
+        </div>
+        <div class="search">
+          <img src="images/serch.svg" alt="">
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="banner seaside">
+        <img class='seaside' src="images/hero-banner 2.png" alt="">
+        <div class="banner__message">
+          <h2 class='message1'>It's Time To</h2>
+          <h2 class='message2'>Explore The World</h2>
+
+          <button>
+            Plan Your Trip
+          </button>
+        </div>
+      </div>
+
+      <div class="discover filter">
+        <div class="filter__item">
+          <label>
+            <span>
+              Destinations
+            </span>
+            <select>
+              <option value="AE">Arab Egypt</option>
+              <option value="Phuket" selected>Phuket</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filter__item">
+          <label>
+            <span>
+              Check in
+            </span>
+            <input type="text" name="" id="">
+          </label>
+        </div>
+
+        <div class="filter__item">
+          <label>
+            <span>
+              Price range
+            </span>
+            <input type="text" name="" id="">
+          </label>
+        </div>
+
+        <div class="filter__item">
+          <button>Discover now</button>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step first_step">
+          <div class="step__content">
+            <div class="step__image">
+              <img src="images/map 1.png" alt="">
+            </div>
+            <h3 class="step__header">Cheese Destination</h3>
+            <div class="step__description">
+              Just open your map and put your finger on random place
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__content">
+            <div class="step__image">
+              <img src="images/binocular 1.png" alt="">
+            </div>
+            <h3 class="step__header">Explore The Place</h3>
+            <div class="step__description">
+              Just open your map and put your finger on random place
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__content">
+            <div class="step__image">
+              <img src="images/backpack 1.png" alt="">
+            </div>
+            <h3 class="step__header">Start Your Journey</h3>
+            <div class="step__description">
+              Just open your map and put your finger on random place
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__content">
+            <div class="step__image">
+              <img src="images/ukelele 1.png" alt="">
+            </div>
+            <h3 class="step__header">Let's Enjoy</h3>
+            <div class="step__description">
+              Just open your map and put your finger on random place
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/gsap-public/minified/gsap.min.js"></script>
+  <script>
+    // gsap.from('.message1', { opacity: 0, delay: 1, y: 30 });
+    // gsap.from('.message2', { opacity: 0, delay: 2, y: 30 });
+    // gsap.from('.banner__message button', { opacity: 0, delay: 3, y: 30 });
+    let btnAnimation = () => {
+      const tlMessageBtn = gsap.timeline({ defaults: { duration: .1 }, repeat: -1, repeatDelay: 3 });
+      tlMessageBtn.to('.banner__message button', { rotate: 5 })
+        .to('.banner__message button', { rotate: -5 })
+        .to('.banner__message button', { rotate: 5 })
+        .to('.banner__message button', { rotate: 0 });
+      return tlMessageBtn;
+    }
+
+    let stepAnimation = () => {
+      const tlStep = gsap.timeline({ defaults: { duration: 1 }, repeat: -1, repeatDelay: 2 });
+      tlStep
+        .to('.first_step', { y: -30 })
+        .to('.first_step', { y: 0, ease: "bounce.out" });
+      return tlStep;
+    }
+    const tl = gsap.timeline({ defaults: { duration: .5 } });
+    tl.from('.message1', { opacity: 0, y: 30 })
+      .from('.message2', { opacity: 0, y: 30 })
+      .from('.banner__message button', { opacity: 0, y: 30 })
+      .add(btnAnimation);
+
+    var sa = stepAnimation();
+    const firstStep = document.querySelector('.steps');
+    firstStep.addEventListener('mouseover', () => {
+      sa.pause();
+    });
+    firstStep.addEventListener('mouseleave', () => {
+      sa.resume();
+    })
+  </script>
+</body>
+
+</html>
