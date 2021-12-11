@@ -155,10 +155,54 @@
     }
 
     let stepAnimation = () => {
-      const tlStep = gsap.timeline({ defaults: { duration: 1 }, repeat: -1, repeatDelay: 2 });
-      tlStep
-        .to('.first_step', { y: -30 })
-        .to('.first_step', { y: 0, ease: "bounce.out" });
+      let tlStep = gsap.timeline({ defaults: { duration: 1 }, repeat: -1, repeatDelay: 1 });
+      const steps = document.querySelectorAll('.step');
+      // 1
+      // tlStep
+      //   .to('.first_step', { y: -30 })
+      //   .to('.first_step', { y: 0, ease: "bounce.out" });
+      // 2
+      // tlStep
+      //   .to('.step', { y: -30 })
+      //   .to('.step', { y: 0, ease: "bounce.out" });
+
+      // 3
+      // document.querySelectorAll('.step').forEach(step => {
+      //   tlStep = tlStep
+      //     .to(step, { y: -30 })
+      //     .to(step, { y: 0, ease: "bounce.out" });
+      // });
+
+      // 3.1
+      // document.querySelectorAll('.step').forEach(step => {
+      //   tlStep = tlStep
+      //     .to(step, { y: -30 }, '-=1')
+      //     .to(step, { y: 0, ease: "bounce.out" });
+      // });
+
+      // 4
+      // steps.forEach(step => {
+      //   tlStep = tlStep
+      //     .to(step, { y: -30 })
+      //     // .to(step, { y: 0, ease: "bounce.out" });
+      // });
+      // steps.forEach(step => {
+      //   tlStep = tlStep
+      //     // .to(step, { y: -30 }, '-=1')
+      //     .to(step, { y: 0, ease: "bounce.out" });
+      // });
+
+      // 5
+      let i = 0;
+      steps.forEach(step => {
+        let stepTimeLine = gsap.timeline({ defaults: { duration: 1 }, repeat: -1, repeatDelay: 4 });
+        stepTimeLine.to(step, { y: -30 })
+          .to(step, { y: 0, ease: "bounce.out" });
+        tlStep.add(stepTimeLine, i > 0 ? '-=1.5': '0');
+        i++;
+      });
+      
+
       return tlStep;
     }
     const tl = gsap.timeline({ defaults: { duration: .5 } });
